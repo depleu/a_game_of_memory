@@ -18,6 +18,7 @@ cardArray.sort(() => 0.5 - Math.random());
 const board = document.querySelector("#board");
 const result = document.querySelector("#result");
 const trys = document.querySelector("#try");
+const again = document.querySelector("#again");
 let i = 0;
 let cardsChosen = []
 let cardsChosenIds = []
@@ -68,8 +69,12 @@ function checkMatch() {
     cardsChosenIds = []
 
     if (cardsWon.length === (cardArray.length/2)) {
-        result.innerText = `Congrats, you found every Match and you just needed ${i} trys`
+        result.parentElement.innerText = `Congrats, you found every Match and you just needed ${i} trys`
         trys.parentElement.remove();
+        again.classList.remove("none");
+        again.addEventListener("click", () => {
+            location.reload()
+        })
     }
 }
 
